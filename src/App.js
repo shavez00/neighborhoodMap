@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import './App.css';
 
-import MainPage from './MainPage';
+import GoogleMap from './GoogleMap';
 
 class NeighborhoodMap extends React.Component {
     state = {
@@ -16,7 +16,7 @@ class NeighborhoodMap extends React.Component {
     render() {
       return (
         <div className="app">
-              <MainPage />
+              <GoogleMap />
         </div>
       )
     }
