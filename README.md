@@ -1,44 +1,52 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Udacity FEND Neighborhood Map
 
-In the project directory, you can run:
+This is my Udacity Nano-degree project create a memory game using Javascript and CSS.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Step 1.  Git clone the repository</br>
+Step 2.  If you don't have python installed, [install python](https://www.python.org/downloads/).</br>
+Step 3.  Verify your python installation by running the command "python -V" from your command line.  You should get a response with your version of Python, if not, doublecheck step 2.</br>
+Step 4.  Navigate to the root directory of where you cloned the repository.</br>
+Step 5.  Run the python command "python -m SimpleHTTPServer 8000" to start HTTP Server.</br>
+Step 6.  Launch web browser and nagivate to "http://localhost:8000"</br>
+Step 7.  Enjoy!</br>
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Playing the memory game
 
-### `npm test`
+This is the classic game of memory.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Click any card and you will see what that card is.
 
-### `npm run build`
+Match any two cards and those two cards will stay face up.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If the two cards do not match then they will turn face down and you can try two more cards.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The object of the game is to find each of the cards match in as few moves as possible.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The more moves it takes you, the more stars you will lose.
 
-### `npm run eject`
+Try and find all of the matches as fast as possible.  Your time will be displayed at the end of the game.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Click the cancel  button to remove the summary screen. Click the replay button to re-shuffle the cards and start over.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start over any time by clicking the replay icon at the top right hand corner of the game.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Prerequisites
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A Javascript compatible web browser and a web server of your choice.
 
-## Learn More
+### Resources used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+"Implement Google Maps in ReactJs" [Hackernoon](https://hackernoon.com/implement-google-maps-in-reactjs-5bc218074689) - Author Mohammed Chisti
+"Introduction to Google Maps API." [scotch.io](https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react) - Author Rachael Njeri
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authors
+
+* **Mark Shavers** - *Initial work* - [shavez00](https://github.com/shavez00)
+
+## Contributing
+
+This was a course project and was put onto Github for grading, so unfortunately I cannot accept contributions. Thank you!
