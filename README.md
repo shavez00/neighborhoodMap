@@ -40,7 +40,6 @@ A Javascript compatible web browser and a web server of your choice.
 
 ### Resources used
 
-"Implement Google Maps in ReactJs" [Hackernoon](https://hackernoon.com/implement-google-maps-in-reactjs-5bc218074689) - Author Mohammed Chisti
 "Introduction to Google Maps API." [scotch.io](https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react) - Author Rachael Njeri
 
 ## Authors
