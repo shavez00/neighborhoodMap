@@ -97,8 +97,9 @@ class App extends Component {
         // so Google Maps can invoke it
         window.initMap = this.initMap;
         // Asynchronously load the Google Maps script, passing in the callback reference
+        var message;
         loadMapJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDxN1LlR2Bht1yUqGC673FQfj1bh0y5rT0&callback=initMap')
-        this.getVenues();
+        //this.getVenues();
     }
     
     getVenues = (query = 'tacos') => {
