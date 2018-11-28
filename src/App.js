@@ -7,7 +7,7 @@ import GoogleMap from './GoogleMap';
 
 class NeighborhoodMap extends React.Component { 
     state = {
-        
+        venues: []
     }
     
     componentDidMount () {
@@ -26,7 +26,9 @@ class NeighborhoodMap extends React.Component {
         
         axios.get(endPoint + new URLSearchParams(parameters))
                 .then(response => {
-                    console.log(response);
+                    this.setState({
+                        venues: response.data.response.groups[0].items
+                    });
                 })
                 .catch(error => {
                     console.log("ERROR!! " + error);
@@ -36,7 +38,9 @@ class NeighborhoodMap extends React.Component {
     render() {
       return (
         <div className="app">
-              <GoogleMap />
+            <GoogleMap 
+             venues = { this.state.venues }
+            />
         </div>
       )
     }

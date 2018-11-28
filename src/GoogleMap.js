@@ -29,21 +29,38 @@ export class MapContainer extends Component {
         }
     };
     
-    render() {
+    render() { 
+        
+   let name = '';
+    let lat = '';
+     let lng = '';
+            this.props.venues.map(myVenue => {
+        name = myVenue.venue.name;
+        lat = Math.round( myVenue.venue.location.lat *10)/10;
+        lng = Math.round( myVenue.venue.location.lng *10)/10;;
+    })
+
+    
         return (
             <Map
             google={this.props.google}
-            zoom={15}
+            zoom={13}
             style={mapStyles}
             initialCenter={{
              lat: 45.5233226,
              lng: -122.6798009
             }}
             >
-                <Marker
-                onClick={this.onMarkerClick}
-                name={'Kenyatta International Convention Centre'}
-                />
+                {this.props.venues
+                            .map(myVenue => (
+                                <Marker key={ myVenue.venue.id }
+                                onClick={this.onMarkerClick}
+                                name={ myVenue.venue.name }
+                                position={{lat: `${ myVenue.venue.location.lat }`, lng: `${ myVenue.venue.location.lng }`}}
+                                />
+                            ))
+                    }
+                
                     <InfoWindow
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}

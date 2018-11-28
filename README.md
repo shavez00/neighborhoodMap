@@ -37,12 +37,13 @@ Start over any time by clicking the replay icon at the top right hand corner of 
 
 ### Prerequisites
 
-A Javascript compatible web browser and a web server of your choice.
+A Javascript compatible web browser and [React](https://reactjs.org/).
 
 ### Resources used
 
 "Introduction to Google Maps API." [scotch.io](https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react) - Author Rachael Njeri
 "Udacity Neighbood Map [3] get venus from FourSquare API in React App using Axios" [youtube](https://youtu.be/dAhMIF0fNpo)
+"Google Map React Component Tutorial" [github](https://github.com/fullstackreact/google-maps-react)
 
 ## Authors
 
