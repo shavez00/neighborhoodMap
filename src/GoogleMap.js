@@ -7,40 +7,7 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-    state = {
-        showingInfoWindow: false,
-        activeMarker: {},
-        selectedPlace: {}
-    };
-    
-    onMarkerClick = (props, marker, e) =>
-    this.setState({
-        selectedPlace: props,
-        activeMarker: marker,
-        showingInfoWindow: true
-    });
-
-    onClose = props => {
-        if (this.state.showingInfoWindow) {
-            this.setState({
-                showingInfoWindow: false,
-                activeMarker: null
-            });
-        }
-    };
-    
-    render() { 
-        
-   let name = '';
-    let lat = '';
-     let lng = '';
-            this.props.venues.map(myVenue => {
-        name = myVenue.venue.name;
-        lat = Math.round( myVenue.venue.location.lat *10)/10;
-        lng = Math.round( myVenue.venue.location.lng *10)/10;;
-    })
-
-    
+    render() {
         return (
             <Map
             google={this.props.google}
@@ -54,7 +21,7 @@ export class MapContainer extends Component {
                 {this.props.venues
                             .map(myVenue => (
                                 <Marker key={ myVenue.venue.id }
-                                onClick={this.onMarkerClick}
+                                onClick={this.props.onMarkerClick}
                                 name={ myVenue.venue.name }
                                 position={{lat: `${ myVenue.venue.location.lat }`, lng: `${ myVenue.venue.location.lng }`}}
                                 />
@@ -62,12 +29,12 @@ export class MapContainer extends Component {
                     }
                 
                     <InfoWindow
-                    marker={this.state.activeMarker}
-                    visible={this.state.showingInfoWindow}
-                    onClose={this.onClose}
+                    marker={this.props.activeMarker}
+                    visible={this.props.showingInfoWindow}
+                    onClose={this.props.onClose}
                     >
                         <div>
-                          <h4>{this.state.selectedPlace.name}</h4>
+                          <h4>{this.props.selectedPlace.name}</h4>
                         </div>
                     </InfoWindow>
             </Map>

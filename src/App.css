@@ -1,6 +1,29 @@
-.App {
+.app {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  .sidebar {
+      width: 25%;
+  }
 }
+
+.venueList {
+    padding: 1rem;
+}
+
+.listItem {
+    list-style: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+  
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -20,6 +43,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Sidebar {
+    position: right;
 }
 
 @keyframes App-logo-spin {

@@ -4,18 +4,46 @@ import './App.css';
 import axios from 'axios';
 
 import GoogleMap from './GoogleMap';
+import Sidebar from './Sidebar';
 
 class NeighborhoodMap extends React.Component { 
     state = {
         venues: [],
-        foodType: ''
+        foodType: '',
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {}
     }
     
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
+
+    onClose = props => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            });
+        }
+    };
+    
     updateQuery = (query) => {
-      this.setState({
-          foodType: query
-      })
-      this.getVenues(query);
+        if(query) {
+            this.setState({
+                foodType: query
+            })
+            this.getVenues(query);
+        } else {
+            this.setState({
+                foodType: ''
+            });
+            this.getVenues('tacos');
+        }
+      
   }
     
     componentDidMount () {
@@ -46,14 +74,29 @@ class NeighborhoodMap extends React.Component {
     render() {
       return (
         <div className="app">
-            <input 
+            <Sidebar 
+            foodType= {this.state.foodType}
+            updateQuery={this.updateQuery}
+            venues = { this.state.venues.slice(0,10) }
+             onMarkerClick = { this.onMarkerClick }
+             onClose = { this.onClose }
+             activeMarker = { this.state.activeMarker }
+             showingInfoWindow = { this.state.showingInfoWindow }
+             selectedPlace = { this.state.selectedPlace }
+            />
+            {/*<input 
                     type="text" 
                     placeholder="Search for type of food"
                     value={this.state.foodType}
                     onChange={(event) => this.updateQuery(event.target.value)}
-                />
+                />*/}
             <GoogleMap 
-             venues = { this.state.venues }
+             venues = { this.state.venues.slice(0,10) }
+             onMarkerClick = { this.onMarkerClick }
+             onClose = { this.onClose }
+             activeMarker = { this.state.activeMarker }
+             showingInfoWindow = { this.state.showingInfoWindow }
+             selectedPlace = { this.state.selectedPlace }
             />
         </div>
       )
