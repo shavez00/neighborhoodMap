@@ -15,25 +15,13 @@ Step 6.  Run the npm command "npm install axios" to install Axios for fetching d
 Step 6.  Run the npm command "npm start" a browser should launch to the URL "http://localhost:3000" and bring up the bookshelf.
 Step 7.  Enjoy!</br>
 
-## Playing the memory game
+## Using the neighborhood map
 
-This is the classic game of memory.
+The neighborhood map displays restaurants in downtown Portland that serve Mexican food.  Click on any pin drop to see additional information on that location.
 
-Click any card and you will see what that card is.
+Select any location in the list box on the right to see where on the map that location is.
 
-Match any two cards and those two cards will stay face up.
-
-If the two cards do not match then they will turn face down and you can try two more cards.
-
-The object of the game is to find each of the cards match in as few moves as possible.
-
-The more moves it takes you, the more stars you will lose.
-
-Try and find all of the matches as fast as possible.  Your time will be displayed at the end of the game.
-
-Click the cancel  button to remove the summary screen. Click the replay button to re-shuffle the cards and start over.
-
-Start over any time by clicking the replay icon at the top right hand corner of the game.
+In the InfoWindow will be a link to FourSquare to get additional information.
 
 ### Prerequisites
 
