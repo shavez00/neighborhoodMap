@@ -5,7 +5,7 @@ class VenueList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'locations': '',
+            'locations': [],
             'query': '',
             'suggestions': true,
         };
@@ -18,7 +18,7 @@ class VenueList extends Component {
         this.props.closeInfoWindow();
         const {value} = event.target;
         var locations = [];
-        this.props.alllocations.forEach(function (location) {
+        this.props.venues.forEach(function (location) {
             if (location.longname.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
                 location.marker.setVisible(true);
                 locations.push(location);
@@ -35,7 +35,7 @@ class VenueList extends Component {
 
     componentWillMount() {
         this.setState({
-            'locations': this.props.alllocations
+            'locations': this.props.venues
         });
     }
 
@@ -46,6 +46,7 @@ class VenueList extends Component {
     }
 
     render() {
+        console.log(this.props.venues);
         var locationlist = this.state.locations.map(function (listItem, index) {
             return (
                 <ListItem key={index} openInfoWindow={this.props.openInfoWindow.bind(this)} data={listItem}/>

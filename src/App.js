@@ -6,94 +6,15 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'alllocations': [
-               {
-                    'name': "¿Por Qué No?",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.51209727572414,
-                    'longitude': -122.61433943252604,
-                    'streetAddress': "4635 SE Hawthorne Blvd"
-                },
-                {
-                    'name': "El Nutri Taco",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.559026593114076,
-                    'longitude': -122.64325388733518,
-                    'streetAddress': "2124 NE Alberta St"
-                },
-                {
-                    'name': "Uno Mas Taquiza",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.5228155161896,
-                    'longitude': -122.69049808685563,
-                    'streetAddress': "1914 W Burnside St"
-                },
-                {
-                    'name': "King Burrito Mexican Food",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.5769701,
-                    'longitude': -122.6971121,
-                    'streetAddress': "2924 N Lombard St"
-                },
-                {
-                    'name': "Stella Taco",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.50476385234975,
-                    'longitude': -122.63408334581044,
-                    'streetAddress': "3060 SE Division St"
-                },
-                {
-                    'name': "Casa del Matador",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.533266616749515,
-                    'longitude': -122.69858007164554,
-                    'streetAddress': "1438 NW 23rd Ave"
-                },
-                {
-                    'name': "Los Gorditos",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.52433080115418,
-                    'longitude': -122.68068808050818,
-                    'streetAddress': "922 NW Davis St"
-                },
-                {
-                    'name': "Cruzroom",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.559030305772076,
-                    'longitude': -122.64120920870587,
-                    'streetAddress': "2338 NE Alberta St"
-                },
-                {
-                    'name': "Santeria",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.52252375441655,
-                    'longitude': -122.67796380808184,
-                    'streetAddress': "703 SW Ankeny St"
-                },
-                {
-                    'name': "Robo Taco",
-                    'type': "Mexican Restaurant",
-                    'latitude': 45.517259048127535,
-                    'longitude': -122.65952411694495,
-                    'streetAddress': "607 SE Morrison St"
-                }
-            ],
             'map': '',
             'infowindow': '',
-            'prevmarker': ''
+            'prevmarker': '',
+            'venues': []
         };
 
         this.initMap = this.initMap.bind(this);
         this.openInfoWindow = this.openInfoWindow.bind(this);
         this.closeInfoWindow = this.closeInfoWindow.bind(this);
-    }
-    
-    state = {
-        venues: [],
-        foodType: '',
-        showingInfoWindow: false,
-        activeMarker: {},
-        selectedPlace: {}
     }
     
     getVenues = (query = 'tacos') => {
@@ -207,7 +128,6 @@ const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
                     console.log("ERROR!! " + error);
                 }).then(venueArray => {
                        venueArray.map(location => {
-                            console.log(location);
                             var longname = location.name + ' - ' + location.type;
                             var marker = new window.google.maps.Marker({
                                 position: new window.google.maps.LatLng(location.lat, location.lng),
@@ -218,6 +138,7 @@ const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
             marker.addListener('click', function () {
                 self.openInfoWindow(marker);
             });
+
         });
     })
     }
@@ -276,7 +197,7 @@ const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
     render() {
         return (
             <div>
-                <VenueList key="100" alllocations={this.state.alllocations} openInfoWindow={this.openInfoWindow}
+                <VenueList key="100" venues={this.state.venues} openInfoWindow={this.openInfoWindow}
                               closeInfoWindow={this.closeInfoWindow}/>
                 <div id="map"></div>
             </div>
