@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import LocationList from './LocationList';
-import axios from 'axios';
 
 class App extends Component {
-    /**
-     * Constructor
-     */
     constructor(props) {
         super(props);
         this.state = {
@@ -86,46 +82,17 @@ class App extends Component {
             'prevmarker': ''
         };
 
-        // retain object instance when used in the function
         this.initMap = this.initMap.bind(this);
         this.openInfoWindow = this.openInfoWindow.bind(this);
         this.closeInfoWindow = this.closeInfoWindow.bind(this);
     }
 
     componentDidMount() {
-        // Connect the initMap() function within this class to the global window context,
-        // so Google Maps can invoke it
         window.initMap = this.initMap;
-        // Asynchronously load the Google Maps script, passing in the callback reference
         var message;
         loadMapJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDxN1LlR2Bht1yUqGC673FQfj1bh0y5rT0&callback=initMap')
-        //this.getVenues();
-    }
-    
-    getVenues = (query = 'tacos') => {
-        const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
-        const parameters = {
-            client_id: "K25BCW1JNBKA1IK5YOOWRBBA0N31B41LCCPN1R4T0TBBDAEH",
-            client_secret: "4TGBO0KZVF1ORTSER0AO5UZVRIUT2OGE02ITXFPNZJ1JIJGA",
-            query: query,
-            near: 'Portland, OR',
-            v: "20180101"
-        }
-        
-        /*axios.get(endPoint + new URLSearchParams(parameters))
-                .then(response => {
-                    this.setState({
-                        allocations: response.data.response.groups[0].items
-                    });
-                })
-                .catch(error => {
-                    console.log("ERROR!! " + error);
-                })*/
     }
 
-    /**
-     * Initialise the map once the google map script is loaded
-     */
     initMap() {
         var self = this;
 
@@ -181,10 +148,6 @@ class App extends Component {
         });
     }
 
-    /**
-     * Open the infowindow for the marker
-     * @param {object} location marker
-     */
     openInfoWindow(marker) {
         this.closeInfoWindow();
         this.state.infowindow.open(this.state.map, marker);
@@ -198,10 +161,6 @@ class App extends Component {
         this.getMarkerInfo(marker);
     }
 
-    /**
-     * Retrive the location data from the foursquare api for the marker and display it in the infowindow
-     * @param {object} location marker
-     */
     getMarkerInfo(marker) {
         var self = this;
         var clientId = "K25BCW1JNBKA1IK5YOOWRBBA0N31B41LCCPN1R4T0TBBDAEH";
@@ -232,10 +191,6 @@ class App extends Component {
             });
     }
 
-    /**
-     * Close the infowindow for the marker
-     * @param {object} location marker
-     */
     closeInfoWindow() {
         if (this.state.prevmarker) {
             this.state.prevmarker.setAnimation(null);
@@ -246,9 +201,6 @@ class App extends Component {
         this.state.infowindow.close();
     }
 
-    /**
-     * Render function of App
-     */
     render() {
         console.log(this.state.allocations);
         return (
@@ -263,10 +215,6 @@ class App extends Component {
 
 export default App;
 
-/**
- * Load the google maps Asynchronously
- * @param {url} url of the google maps script
- */
 function loadMapJS(src) {
     var ref = window.document.getElementsByTagName("script")[0];
     var script = window.document.createElement("script");
