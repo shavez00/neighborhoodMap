@@ -177,12 +177,10 @@ class App extends Component {
                     // Examine the text in the response
                     response.json().then(function (data) {
                         var location_data = data.response.venues[0];
-                        var verified = '<b>Verified Location: </b>' + (location_data.verified ? 'Yes' : 'No') + '<br>';
-                        var checkinsCount = '<b>Number of CheckIn: </b>' + location_data.stats.checkinsCount + '<br>';
-                        var usersCount = '<b>Number of Users: </b>' + location_data.stats.usersCount + '<br>';
-                        var tipCount = '<b>Number of Tips: </b>' + location_data.stats.tipCount + '<br>';
+                        var venueName = '<b>Restaurant Name: </b>' + location_data.name + '<br>';
+                        var venueAddress = '<b>Restaurant Address: </b>' + location_data.location.address + '<br>';
                         var readMore = '<a href="https://foursquare.com/v/'+ location_data.id +'" target="_blank">Read More on Foursquare Website</a>'
-                        self.state.infowindow.setContent(checkinsCount + usersCount + tipCount + verified + readMore);
+                        self.state.infowindow.setContent(venueName + venueAddress + readMore);
                     });
                 }
             )
@@ -202,7 +200,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.allocations);
         return (
             <div>
                 <VenueList key="100" alllocations={this.state.alllocations} openInfoWindow={this.openInfoWindow}
