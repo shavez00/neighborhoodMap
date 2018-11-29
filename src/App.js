@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LocationList from './LocationList';
+import VenueList from './VenueList';
 
 class App extends Component {
     constructor(props) {
@@ -205,7 +205,7 @@ class App extends Component {
         console.log(this.state.allocations);
         return (
             <div>
-                <LocationList key="100" alllocations={this.state.alllocations} openInfoWindow={this.openInfoWindow}
+                <VenueList key="100" alllocations={this.state.alllocations} openInfoWindow={this.openInfoWindow}
                               closeInfoWindow={this.closeInfoWindow}/>
                 <div id="map"></div>
             </div>
