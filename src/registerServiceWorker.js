@@ -1,3 +1,10 @@
+//Service worker caching is only available in production.
+
+//To enable the service worker for caching run "npm run build".  Once you run the build
+//script you will be presented with the option to start the production server with the command
+//"serve -s build".  Type in that command and the application will launch with a service
+//worker enabled and will be available at "http://localhost:5000".
+
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives

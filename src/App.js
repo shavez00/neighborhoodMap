@@ -16,47 +16,9 @@ class App extends Component {
         this.openInfoWindow = this.openInfoWindow.bind(this);
         this.closeInfoWindow = this.closeInfoWindow.bind(this);
     }
-    
-    getVenues = (query = 'tacos') => {
-        const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
-        const parameters = {
-            client_id: "K25BCW1JNBKA1IK5YOOWRBBA0N31B41LCCPN1R4T0TBBDAEH",
-            client_secret: "4TGBO0KZVF1ORTSER0AO5UZVRIUT2OGE02ITXFPNZJ1JIJGA",
-            query: query,
-            near: 'Portland, OR',
-            v: "20180101"
-        }
-        let arrayOfVenueObjects = [];
-        let venueObject = {
-            name: '',
-            address: '',
-            lat: '',
-            lng: ''
-        };
-        axios.get(endPoint + new URLSearchParams(parameters))
-                .then(response => {
-
-                    response.data.response.groups[0].items
-                        .slice(0, 10)
-                            .map(venues => {
-                                const venue = Object.create(venueObject)
-                                venue.name = venues.venue.name;
-                                venue.address = venues.venue.location.address;
-                                venue.lat = venues.venue.location.lat;
-                                venue.lng = venues.venue.location.lng;
-                                this.setState({
-                                    venues: venue
-                                });
-                            })
-                })
-                .catch(error => {
-                    console.log("ERROR!! " + error);
-                })
-    }
 
     componentDidMount() {
         window.initMap = this.initMap;
-        var message;
         loadMapJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDxN1LlR2Bht1yUqGC673FQfj1bh0y5rT0&callback=initMap')
     }
 
@@ -92,14 +54,14 @@ class App extends Component {
             self.closeInfoWindow();
         });
 
-const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
+        const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
         const parameters = {
             client_id: "K25BCW1JNBKA1IK5YOOWRBBA0N31B41LCCPN1R4T0TBBDAEH",
             client_secret: "4TGBO0KZVF1ORTSER0AO5UZVRIUT2OGE02ITXFPNZJ1JIJGA",
             query: 'tacos',
             near: 'Portland, OR',
             v: "20180101"
-        }
+        };
         let arrayOfVenueObjects = [];
         let venueObject = {
             name: '',
@@ -112,35 +74,29 @@ const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
                     response.data.response.groups[0].items
                         .slice(0, 10)
                             .map(venues => {
-                                const venue = Object.create(venueObject)
+                                const venue = Object.create(venueObject);
                                 venue.name = venues.venue.name;
                                 venue.address = venues.venue.location.address;
                                 venue.lat = venues.venue.location.lat;
                                 venue.lng = venues.venue.location.lng;
-                                this.setState({
-                                    venues: venue
+                                venue.longname = venue.name;
+                                venue.marker = new window.google.maps.Marker({
+                                    position: new window.google.maps.LatLng(venue.lat, venue.lng),
+                                    animation: window.google.maps.Animation.DROP,
+                                    map: map
+                                });
+                                venue.marker.addListener('click', function () {
+                                    self.openInfoWindow(venue.marker);
                                 });
                                 arrayOfVenueObjects.push(venue);
-                            })
-                            return arrayOfVenueObjects;
+                            });
+                            this.setState({
+                                venues: arrayOfVenueObjects
+                            });
                 })
                 .catch(error => {
                     console.log("ERROR!! " + error);
-                }).then(venueArray => {
-                       venueArray.map(location => {
-                            var longname = location.name + ' - ' + location.type;
-                            var marker = new window.google.maps.Marker({
-                                position: new window.google.maps.LatLng(location.lat, location.lng),
-                                animation: window.google.maps.Animation.DROP,
-                                map: map
-                            }); 
-
-            marker.addListener('click', function () {
-                self.openInfoWindow(marker);
-            });
-
-        });
-    })
+                });
     }
 
     openInfoWindow(marker) {
@@ -168,8 +124,7 @@ const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
                         self.state.infowindow.setContent("Sorry data can't be loaded");
                         return;
                     }
-
-                    // Examine the text in the response
+                    
                     response.json().then(function (data) {
                         var location_data = data.response.venues[0];
                         var venueName = '<b>Restaurant Name: </b>' + location_data.name + '<br>';
@@ -197,7 +152,7 @@ const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
     render() {
         return (
             <div>
-                <VenueList key="100" venues={this.state.venues} openInfoWindow={this.openInfoWindow}
+                <VenueList role='application' key="100" venues={this.state.venues} openInfoWindow={this.openInfoWindow}
                               closeInfoWindow={this.closeInfoWindow}/>
                 <div id="map"></div>
             </div>

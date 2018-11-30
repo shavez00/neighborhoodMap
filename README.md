@@ -23,6 +23,8 @@ Select any location in the list box on the right to see where on the map that lo
 
 In the InfoWindow will be a link to FourSquare to get additional information.
 
+Service worker caching is available for off-line access.  For instructions on how to enable service worker caching, please see the notes in the "./src/registerServiceWorker.js" file.
+
 ### Prerequisites
 
 A Javascript compatible web browser and [React](https://reactjs.org/).

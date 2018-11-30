@@ -46,8 +46,8 @@ class VenueList extends Component {
     }
 
     render() {
-        console.log(this.props.venues);
-        var locationlist = this.state.locations.map(function (listItem, index) {
+        const venues = (this.state.locations.length === 0) ?  this.props.venues :  this.state.locations;
+        var locationlist = venues.map(function (listItem, index) {
             return (
                 <ListItem key={index} openInfoWindow={this.props.openInfoWindow.bind(this)} data={listItem}/>
             );
