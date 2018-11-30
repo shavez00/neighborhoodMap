@@ -12,9 +12,16 @@ Step 3.  Verify your npm installation by running the command "npm -V" from your 
 Step 4.  Navigate to the root directory of where you cloned the repository.</br>
 Step 5.  Run the npm command "npm install google-maps-react" to install Google Maps React Componet .</br>
 Step 6.  Run the npm command "npm install axios" to install Axios for fetching data from an API.</br>
-Step 6.  Run the npm command "npm start" a browser should launch to the URL "http://localhost:3000" and bring up the bookshelf.
-Step 7.  Enjoy!</br>
+Step 7.  Run the npm command "npm start" a browser should launch to the URL "http://localhost:3000" and bring up the bookshelf.
+Step 8.  Enjoy!</br>
+
 *** NOTE: Service Worker caching for off-line use is only available in production.  See below for instructions on using the application for instructions on how to enable service worker. ***
+Running application in production:
+Follow Steps 1-6 above.
+Step 7.  Run the npm command "npm run build"
+Step 8.  Once the build script completes, run the command "serve -s build".
+Step 9.  The application will be available at "http://localhost:5000".
+Step 10.  Enjoy!
 
 ## Using the neighborhood map
 
