@@ -18,13 +18,18 @@ class VenueList extends Component {
         this.props.closeInfoWindow();
         const {value} = event.target;
         var locations = [];
+        let counter = 0;
         this.props.venues.forEach(function (location) {
             if (location.longname.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
                 location.marker.setVisible(true);
                 locations.push(location);
             } else {
                 location.marker.setVisible(false);
+                counter++;
             }
+        });
+        if(counter === 10) this.props.venues.forEach(function (location) {
+            location.marker.setVisible(true);
         });
 
         this.setState({

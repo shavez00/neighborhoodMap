@@ -14,6 +14,7 @@ Step 5.  Run the npm command "npm install google-maps-react" to install Google M
 Step 6.  Run the npm command "npm install axios" to install Axios for fetching data from an API.</br>
 Step 6.  Run the npm command "npm start" a browser should launch to the URL "http://localhost:3000" and bring up the bookshelf.
 Step 7.  Enjoy!</br>
+*** NOTE: Service Worker caching for off-line use is only available in production.  See below for instructions on using the application for instructions on how to enable service worker. ***
 
 ## Using the neighborhood map
 

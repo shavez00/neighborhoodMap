@@ -73,7 +73,7 @@ class App extends Component {
                 .then(response => {
                     response.data.response.groups[0].items
                         .slice(0, 10)
-                            .map(venues => {
+                            .forEach(venues => {
                                 const venue = Object.create(venueObject);
                                 venue.name = venues.venue.name;
                                 venue.address = venues.venue.location.address;
